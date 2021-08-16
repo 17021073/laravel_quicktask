@@ -114,14 +114,15 @@ h2 {
 }
 .btn {
     text-decoration: none;
-    padding: 8px 15px;
+    padding: 5px 15px;
     border-radius: 3px;
-    margin: 20px;
+    margin: 0px;
 }
 
 .update {
     background: #3498DB;
     color: #fff;
+    margin-right: 10px;
     
 }
 
@@ -188,9 +189,13 @@ h2 {
     margin-top: 30px;
 }
 
+.card-img {
+    width: 350px;
+}
+
 .card-img img {
     width: 350px;
-    height: 210px;
+    height: 250px;
     margin-right: 40px;
 }
 
@@ -201,7 +206,8 @@ h2 {
 }
 
 .des-group {
-    margin-right: 30px;
+    margin-left: 30px;
+    width: 100%;
 }
 .des {
     font-size: 20px;
@@ -211,7 +217,19 @@ h2 {
     margin-left: 100px;
 } */
 .back{
-    margin: 50px 0px 0px 140px;
+    margin: 50px 0px 0px 75px;
 }
 
+.invalid-feedback{
+    color: red;
+}
 
+/* custom css */
+.navbar {
+    margin-bottom: 50px;
+    margin-top: 10px;
+}
+
+.btn-group {
+    margin-top: -30px;
+}

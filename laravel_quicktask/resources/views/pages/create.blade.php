@@ -1,26 +1,26 @@
-@extends('layout.main')
+@extends('layouts.app')
 
-@section('main-content')
+@section('content')
 <div class='contain'>
-    <a class='btn_back' href="">Back home</a>
+    <a class='btn_back' href="">{{ __('back-home') }}</a>
     <form action="" method="POST" class="form_create">
         <table class="table_create">
             <tr>
-                <td>Name</td>
-                <td><input type="text" name='name' class='form-info'></td>
+                <td>{{ __('title') }}</td>
+                <td><input type="text" name='title' class='form-info'></td>
             </tr>
             <tr>
-                <td>Description</td>
+                <td>{{ __('description') }}</td>
                 <td><textarea name="description" id="" cols="20" rows="5" class="form-info"></textarea></td>
             </tr>
             <tr>
-                <td>Photo</td>
-                <td><input class="form-info" type="text" name='image' placeholder="Please write link to image (Ex:http://.. .png)"></td>
+                <td>{{ __('photo') }}</td>
+                <td><input class="form-info" type="text" name='image' placeholder="{{ __('please_write') }}"></td>
             </tr>
             <tr>
                 <td></td>
                 <td>
-                    <input type="submit" value='Create' class="button" name="create">
+                    <input type="submit" value="{{ __('Create') }}" class="button" name="create">
                 </td>
             </tr>
         </table>

@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::redirect('/', '/en');
+
+Route::group(['prefix' => '{language}'], function () {
+    
+    Auth::routes();
+    Route::get('/', 'HomeController@index')->name('home'); 
+    
 });
