@@ -1,8 +1,8 @@
-@extends('layout.main')
+@extends('layouts.app')
 
-@section('main-content')
+@section('content')
     <div class="back">
-        <a class='btn_back back-read' href="">Back home</a>
+        <a class='btn_back back-read' href="">{{ __('back-home') }}</a>
     </div>
     <div class='main'>
         <div class="card-img">

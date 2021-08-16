@@ -1,0 +1,19 @@
+{
+    "login": "Đăng nhập",
+    "password": "Mật khẩu",
+    "remember": "Nhớ tài khoản",
+    "create_account": "Tạo tài khoản",
+    "signup": "Đăng ký",
+    "username": "Tên đăng nhập",
+    "Confirm_Password": "Nhập lại mật khẩu",
+    "create-card": "Tạo thẻ",
+    "edit": "Sửa",
+    "delete": "Xóa",
+    "back-home": "Về trang chủ",
+    "title": "Tiêu đề",
+    "description": "Mô tả",
+    "photo": "Ảnh",
+    "please_write": "Hãy viết link đến ảnh (VD: http://.. .png)",
+    "Create": "Tạo",
+    "update": "Cập nhật"
+}

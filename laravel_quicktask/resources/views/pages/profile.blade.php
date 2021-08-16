@@ -7,16 +7,12 @@
         @csrf
         <table class="table_create">
             <tr>
-                <td>{{ __('title') }}</td>
-                <td><input type="text" name='title' value="" class='form-info'></td>
+                <td>{{ __('username') }}</td>
+                <td><input type="text" name='name' value="" class='form-info'></td>
             </tr>
             <tr>
-                <td>{{ __('description') }}</td>
-                <td><textarea name="description" id="" cols="20" rows="5" class="form-info">Description</textarea></td>
-            </tr>
-            <tr>
-                <td>{{ __('photo') }}</td>
-                <td><input class="form-info" value="" type="text" name="image" placeholder="{{ __('please_write') }}"></td>
+                <td>Email</td>
+                <td><input class="form-info" value="" type="email" name="email"></td>
             </tr>
             <tr>
                 <td></td>

@@ -1,0 +1,19 @@
+{
+    "login": "Login",
+    "password": "Password",
+    "remember": "Remember me",
+    "create_account": "Create account",
+    "signup": "Signup",
+    "username": "Username",
+    "Confirm_Password": "Confirm Password",
+    "create-card": "Create card",
+    "edit": "Edit",
+    "delete": "Delete",
+    "back-home": "Back home",
+    "title": "Title",
+    "description": "Description",
+    "photo": "Photo",
+    "please_write": "Please write link to image (Ex:http://.. .png)",
+    "Create": "Create",
+    "update": "Update"
+}
