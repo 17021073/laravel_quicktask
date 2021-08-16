@@ -7,15 +7,17 @@
 
 <!-- list item -->
 <div class="cart-list">
-    <div class="cart">
-        <a href="" style="text-decoration: none">
-            <img class="cart-img" src="" alt="">
-            <h5 class="cart-title">Card title</h5>
-        </a>
-        <div class="btn-group">
-            <a href="" class="btn update">{{ __('edit') }}</a>
-            <a attr-id="" id="delete-btn" class="btn delete">{{ __('delete') }}</a>
+    @foreach ($cards as $card)
+        <div class="cart">
+            <a href="" style="text-decoration: none">
+                <img class="cart-img" src="{{ $card->image }}" alt="">
+                <h5 class="cart-title">{{ $card->title }}</h5>
+            </a>
+            <div class="btn-group">
+                <a href="" class="btn update">{{ __('edit') }}</a>
+                <a attr-id="" id="delete-btn" class="btn delete">{{ __('delete') }}</a>
+            </div>
         </div>
-    </div>
+    @endforeach
 </div>
 @endsection
