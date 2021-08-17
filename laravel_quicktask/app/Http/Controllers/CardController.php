@@ -4,9 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Card;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\MessageBag;
+use Illuminate\Support\Facades\Route;
+use App\Http\Requests\CardRequest;
 
 class CardController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,7 +34,7 @@ class CardController extends Controller
      */
     public function create()
     {
-        //
+        return view('pages.create');
     }
 
     /**
@@ -33,9 +43,13 @@ class CardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CardRequest $request)
     {
-        //
+        $input = $request->all();
+        $input['user_id'] = Auth::id();
+        $card = Card::create($input);
+
+        return redirect(route('home'));
     }
 
     /**
@@ -46,7 +60,9 @@ class CardController extends Controller
      */
     public function show($id)
     {
-        //
+        $card = Card::findOrFail($id);
+
+        return view('pages.read', compact('card'));
     }
 
     /**
@@ -57,7 +73,9 @@ class CardController extends Controller
      */
     public function edit($id)
     {
-        //
+        $card = Card::findOrFail($id);
+
+        return view('pages.update', compact('card'));
     }
 
     /**
@@ -67,9 +85,17 @@ class CardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CardRequest $request, $id)
     {
-        //
+        $data = $request->all();
+        $card = Card::findOrFail($id);
+
+        $card->title = $data['title'];
+        $card->description = $data['description'];
+        $card->image = $data['image'];
+        $card->save();
+
+        return redirect(route('home'));
     }
 
     /**
@@ -80,6 +106,9 @@ class CardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $card = Card::findOrFail($id);
+        $card->delete();
+        
+        return response()->json(['status'=>__('card_delete_message')]);
     }
 }

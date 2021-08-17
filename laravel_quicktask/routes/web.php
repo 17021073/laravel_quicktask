@@ -13,15 +13,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect('/', '/en');
-
-Route::group(['prefix' => '{language}'], function () {
+Route::group(['middleware' => 'locale'], function() {
     
     Auth::routes();
-    Route::get('/', 'HomeController@index')->name('home'); 
-    
+    Route::get('/', 'HomeController@index')->name('home')->middleware('auth');
+
+    Route::resource('cards', 'CardController')->except([
+        'index',
+    ]);
+
+    Route::get('profile/{id}', 'HomeController@profile')->name('profile')->middleware('auth');
+    Route::put('profile/{id}', 'HomeController@updateProfile');
 });
 
-Route::resource('cards', 'CardController')->except([
-    'index',
-]);
+Route::get('change-language/{language}', 'HomeController@changeLanguage')->name('change-language');

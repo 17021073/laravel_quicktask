@@ -42,11 +42,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login', app()->getLocale()) }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register', app()->getLocale()) }}">{{ __('Register') }}</a>
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('signup') }}</a>
                                 </li>
                             @endif
                         @else
@@ -56,14 +56,14 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="">
-                                        Profile
+                                    <a class="dropdown-item" href="{{ route('profile', ['id' => Auth::id()]) }}">
+                                        {{ __('profile') }}
                                     </a>    
 
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item" href=""
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('logout') }}
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
@@ -78,8 +78,8 @@
                                 {{ ucfirst(app()->getLocale()) }}
                             </a>
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route(Route::currentRouteName(), 'en') }}">En</a>
-                                <a class="dropdown-item" href="{{ route(Route::currentRouteName(), 'vi') }}">Vi</a>
+                                <a class="dropdown-item" href="{{ route('change-language', ['en']) }}">En</a>
+                                <a class="dropdown-item" href="{{ route('change-language', ['vi']) }}">Vi</a>
                             </div>
                         </li>
                     </ul>
@@ -91,5 +91,8 @@
             @yield('content')
         </main>
     </div>
+    <script>
+       
+    </script>
 </body>
 </html>

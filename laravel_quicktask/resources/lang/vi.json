@@ -15,5 +15,8 @@
     "photo": "Ảnh",
     "please_write": "Hãy viết link đến ảnh (VD: http://.. .png)",
     "Create": "Tạo",
-    "update": "Cập nhật"
+    "update": "Cập nhật",
+    "logout": "Đăng xuất",
+    "profile": "Hồ sơ",
+    "card_delete_message": "Thẻ đã được xóa thành công"
 }
