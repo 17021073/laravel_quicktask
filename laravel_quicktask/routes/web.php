@@ -21,3 +21,7 @@ Route::group(['prefix' => '{language}'], function () {
     Route::get('/', 'HomeController@index')->name('home'); 
     
 });
+
+Route::resource('cards', 'CardController')->except([
+    'index',
+]);
