@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+import swal from 'sweetalert';
 
 window.Vue = require('vue');
 
@@ -30,3 +31,46 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+/**
+ * handle when click delete button
+ */
+ $(function(){
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    $(".delete").on("click", function (e) {
+        e.preventDefault();
+        var delete_id = $(this).attr("attr-id");
+
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be alble to recover this data!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if(willDelete){
+                var data = {
+                    "_token" : $('input[name="csrf-token"]').val(),
+                    "id" : delete_id,
+                };
+                $.ajax({
+                    type: "DELETE",
+                    url: "/cards/" + delete_id,
+                    data: "data",
+                    success: function (response) {
+                        swal(response.status, {
+                            icon: "success",
+                        });
+                    }
+                });
+            }
+        });
+    });
+})
+

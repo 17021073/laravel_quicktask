@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\UserRequest;
+use App\User;
 use App\Card;
+use App\Session;
 
 class HomeController extends Controller
 {
@@ -14,7 +19,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     /**
@@ -24,8 +29,43 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $cards = Card::all();
+        $cards = User::findOrFail(Auth::id())->cards;
         
         return view('home', compact('cards'));
+    }
+
+    /**
+     * Show profile of user
+     */
+    public function profile($id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('pages.profile', ['user' => $user]);
+    }
+
+    /**
+     * update user profile
+     */
+    public function updateProfile(UserRequest $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $data = $request->all();
+
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->save();
+
+        return redirect(route('home'));
+    }
+
+    /**
+     * Save language to session
+     */
+    public function changeLanguage($language) 
+    {
+        Session::put('language', $language);
+
+        return redirect()->back();
     }
 }
